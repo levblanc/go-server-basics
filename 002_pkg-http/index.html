@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>http.Request and http.ResponseWriter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div style='width: 1000px; margin: 0 auto;'>
+    <div style='width: 70%; float: left; padding: 10px; box-sizing: border-box;'>
+      {{ if .Method }}
+        <p><strong>Request method:</strong> {{ .Method  }}</p>
+      {{ end }}
+
+      {{ if .Host }}
+        <p><strong>Request host:</strong> {{ .Host  }}</p>
+      {{ end }}
+
+      {{ if .ContentLength }}
+        <p><strong>ContentLength:</strong> {{ .ContentLength }}</p>
+      {{ end }}
+    
+      {{ if .URL}}
+        <p><strong>Request URL:</strong></p>
+        <ul>
+          <li>Scheme: {{ .URL.Scheme }}</li>
+          <li>Opaque: {{ .URL.Opaque }}</li>
+          <li>Host: {{ .URL.Host }}</li>
+          <li>Path: {{ .URL.Path }}</li>
+          <li>RawPath: {{ .URL.RawPath }}</li>
+          <li>ForceQuery: {{ .URL.ForceQuery }}</li>
+          <li>RawQuery: {{ .URL.RawQuery }}</li>
+          <li>Fragment: {{ .URL.Fragment }}</li>
+        </ul>
+      {{ end }}
+    
+    
+      {{ if .Header }}
+        <p><strong>Request header fields:</strong></p>
+        {{ range $key, $value := .Header }}
+          <p>
+            <span>{{ $key }}: </span>
+            {{ range $value }}
+              <span>{{ . }}</span>
+            {{ end }}
+          </p>
+        {{ end }}
+      {{ end }}
+    </div>
+    <div style='width: 30%; float:left; padding: 10px; margin-top: 10px; box-sizing: border-box;'>
+      <form action="/" method="POST">
+        <input 
+          type="text" 
+          name="Input Value" 
+          placeholder="type something" 
+          autofocus autocomplete="off">
+        <button 
+          type="submit" 
+          name="Submit Button" 
+          value="Submit"> Submit </button>
+      </form>
+      
+      {{ if .Form }}
+        <br />
+        <p>Note: For custom http response headers, check in devtools</p>
+        <br />
+        {{ range $label, $value := .Form }}
+          <p><strong>{{ $label }}</strong></p>
+          <ul>
+            {{ range $value }}
+              <li><em>{{ . }}</em></li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</body>
+</html>
