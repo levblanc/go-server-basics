@@ -1,0 +1,19 @@
+{{ template "header" }}
+  <div style="width: 50%; padding: 10px; box-sizing: border-box; float: left;">
+    <p>Upload File Form</p>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <button type="submit" name="uploadButton"> Upload </button>
+    </form>
+  </div>
+  <div style="width: 50%; padding: 10px; box-sizing: border-box; float: left;">
+    <p>
+      <strong>Upload Success: </strong>
+      <span>{{ .UploadSuccess }}</span>
+    </p>
+    <p>
+      <strong>File Data: </strong>
+      <span>{{ .FileContent }}</span>
+    </p>
+  </div>
+{{ template "footer" }}

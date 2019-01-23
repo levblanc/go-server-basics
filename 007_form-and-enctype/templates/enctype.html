@@ -1,0 +1,47 @@
+{{ template "header" }}
+  <div style="width: 50%; padding: 10px; box-sizing: border-box; float: left;">
+    <p>Default Enctype "application/x-www-form-urlencoded"</p>
+    <form method="POST" enctype="application/x-www-form-urlencoded">
+      <input 
+        type="text" 
+        name="inputValue" 
+        placeholder="type something" 
+        autofocus autocomplete="off">
+      <button 
+        type="submit" 
+        name="submitButton" 
+        value="Submit"> Submit </button>
+    </form>
+    <br />
+    <p>Enctype "multipart/form-data"</p>
+    <form method="POST" enctype="multipart/form-data">
+      <input 
+        type="text" 
+        name="inputValue" 
+        placeholder="type something" 
+        autofocus autocomplete="off">
+      <button 
+        type="submit" 
+        name="submitButton" 
+        value="Submit"> Submit </button>
+    </form>
+    <br />
+    <p>Enctype "text/plain"</p>
+    <em>Note: Use this enctype only for debugging</em>
+    <form method="POST" enctype="text/plain">
+      <input 
+        type="text" 
+        name="inputValue" 
+        placeholder="type something" 
+        autofocus autocomplete="off">
+      <button 
+        type="submit" 
+        name="submitButton" 
+        value="Submit"> Submit </button>
+    </form>
+  </div>
+  <div style="width: 50%; padding: 10px; box-sizing: border-box; float: left;">
+    <p><strong>Form Data / Request Payload: </strong></p>
+    <p>{{ . }}</p>
+  </div>
+{{ template "footer" }}

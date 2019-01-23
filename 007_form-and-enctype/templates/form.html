@@ -1,0 +1,42 @@
+{{ template "header" }}
+  <div style="width: 50%; padding: 10px; box-sizing: border-box; float: left;">
+    <p>Form with method GET</p>
+    <form method="GET">
+      <input 
+        type="text" 
+        name="inputValue" 
+        placeholder="something to get" 
+        autofocus autocomplete="off">
+      <button 
+        type="submit" 
+        name="getButton" 
+        value="GET"> GET </button>
+    </form>
+    <br />
+    <p>Form with method POST</p>
+    <form method="POST">
+      <input 
+        type="text" 
+        name="inputValue" 
+        placeholder="something to post" 
+        autofocus autocomplete="off">
+      <button 
+        type="submit" 
+        name="postButton" 
+        value="POST"> POST </button>
+    </form>
+  </div>
+  <div style="width: 50%; padding: 10px; box-sizing: border-box; float: left;">
+    <em>Note:</em>
+    <br />
+    <em>Be aware of the url change after using the GET button.</em>
+    <p>
+      <strong>Request Method: </strong>
+      <span>{{ .Method }}</span>
+    </p>
+    <p>
+      <strong>Form Data: </strong>
+      <span>{{ .FormData }}</span>
+    </p>
+  </div>
+{{ template "footer" }}
